@@ -1,0 +1,20 @@
+
+- open Docker Desktop and close/drop existing containers
+
+- docker compose build --no-cache
+
+- docker compose up --pull always -d --wait
+
+- docker exec -it elasticsearch-with-symfony-php-1 /bin/bash
+
+- composer install
+
+- php bin/console migrate
+
+- composer require symfony/ux-icons 
+
+- php bin/console doctrine:fixtures:load
+
+-  --> https://localhost/admin
+
+- elasticsearch is on http:localhost:9200
