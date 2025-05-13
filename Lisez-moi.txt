@@ -1,20 +1,47 @@
 
+-   .env        
+        APP_ENV=dev
+        APP_SECRET=049b339907d407426a853721abaa61a0
+        DATABASE_URL="mysql://app:!ChangeMe!@db/search_engine?serverVersion=8.0.32&charset=utf8mb4"
+        ELASTICSEARCH_URL=http://localhost:9200/
+        MYSQL_DATABASE=search_engine
+        MYSQL_PASSWORD=!ChangeMe!
+        MYSQL_ROOT_PASSWORD=!ChangeMe!
+        MYSQL_USER=app
+
 - open Docker Desktop and close/drop existing containers
 
 - docker compose build --no-cache
 
 - docker compose up --pull always -d --wait
 
+- Optionaly test db connection : 
+        docker compose exec php bin/console dbal:run-sql -q "CREATE TABLE IF NOT EXISTS testTable (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB"
+
+        In DBeaver create a new MariaDB connection
+                server host: localhost
+                port: 3306
+                username: app
+                password: !ChangeMe!
+
 - docker exec -it elasticsearch-with-symfony-php-1 /bin/bash
 
-- composer install
+        - composer install
 
-- php bin/console migrate
+        - php bin/console migrate
 
-- composer require symfony/ux-icons 
+        - composer require symfony/ux-icons 
 
-- php bin/console doctrine:fixtures:load
+        - php bin/console doctrine:fixtures:load
 
 -  --> https://localhost/admin
 
 - elasticsearch is on http:localhost:9200
+
+
+
+
+
+
+
+Démo: https://www.youtube.com/watch?v=5hXIvn5KhTY
